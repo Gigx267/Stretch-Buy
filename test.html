@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stretch Buy - Grocery Delivery in Abuja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo.PNG">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        /* Apple-style Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 44px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-left: 8px;
+        }
+        
+        .logo-icon {
+            color: #2ecc71;
+            font-size: 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 12px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #1d1d1f;
+            font-weight: 400;
+            font-size: 14px;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #2ecc71;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #2ecc71;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .btn-outline {
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .btn-primary {
+            background: #2ecc71;
+            color: white;
+            border: 1px solid #2ecc71;
+        }
+        
+        .btn-primary:hover {
+            background: #27ae60;
+            border-color: #27ae60;
+        }
+        
+        /* Mobile menu button (hidden by default) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #1d1d1f;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        /* ... rest of the CSS remains the same ... */
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 44px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: transform 0.3s, opacity 0.3s;
+                pointer-events: none;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .header-container {
+                height: 44px;
+            }
+        }
+    </style>
+     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2ecc71;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: #2ecc71;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #2ecc71;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn-outline {
+            border: 2px solid #2ecc71;
+            color: #2ecc71;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: #2ecc71;
+            color: white;
+            border: 2px solid #2ecc71;
+        }
+        
+        .btn-primary:hover {
+            background: #27ae60;
+            border-color: #27ae60;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .search-bar {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+        }
+        
+        .search-bar button {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        /* Supermarkets Section */
+        .supermarkets {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            color: #777;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .supermarket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .supermarket-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .supermarket-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .supermarket-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .card-content p {
+            color: #777;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .rating {
+            color: #f39c12;
+        }
+        
+        .delivery-time {
+            color: #2ecc71;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 5% 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #2ecc71;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #2ecc71;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin: 20px 0;
+            }
+            
+            .auth-buttons {
+                margin-top: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+            
+            .search-bar input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .search-bar button {
+                border-radius: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Groceries Delivered from Abuja's Best Supermarkets</h2>
+            <p>Order from your favorite local supermarkets and get your groceries delivered to your doorstep in minutes</p>
+            
+              <!-- New "Pick a Store" button -->
+        <button id="pickStoreBtn" class="btn-primary" style="font-size: 18px; padding: 12px 30px; margin-top: 20px;border-radius: 10%;opacity: ;">
+            Pick a Store
+        </button>
+        </div>
+    </section>
+<style>.btn-primary {
+  /* Basic styling */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  
+  /* Color and background */
+  background-color: #21820b;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #08600d;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  background-color: #e8db2c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} </style>
+  <!-- Supermarkets Section -->
+    <section class="supermarkets">
+        <div class="section-header">
+            <h2>Supermarkets in Abuja</h2>
+            <p>Select from our partner supermarkets across Abuja to start shopping</p>
+        </div>
+        
+        <div class="supermarket-grid">
+            <!-- Supermarket 1 -->
+            <div class="supermarket-card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Next Value Mall">
+                </div>
+                <div class="card-content">
+                    <h3>Next Value Mall</h3>
+                    <p>Wuse 2, Abuja</p>
+                    <p>Wide selection of local and international products</p>
+                    <div class="card-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5</span>
+                        </div>
+                        <div class="delivery-time">30-45 min</div>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; margin-top: 15px;">Shop Now</a>
+                </div>
+            </div>
+            
+            <!-- Supermarket 2 -->
+            <div class="supermarket-card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1550147760-44c9966d6bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Aso Supermarket">
+                </div>
+                <div class="card-content">
+                    <h3>Aso Supermarket</h3>
+                    <p>Maitama, Abuja</p>
+                    <p>Premium products with excellent customer service</p>
+                    <div class="card-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                        <div class="delivery-time">25-40 min</div>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; margin-top: 15px;">Shop Now</a>
+                </div>
+            </div>
+            
+            <!-- Supermarket 3 -->
+            <div class="supermarket-card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1566842600175-97dca3dfc3c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Goodies Store">
+                </div>
+                <div class="card-content">
+                    <h3>Goodies Store</h3>
+                    <p>Garki, Abuja</p>
+                    <p>Best prices on everyday essentials</p>
+                    <div class="card-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.8</span>
+                        </div>
+                        <div class="delivery-time">20-35 min</div>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; margin-top: 15px;">Shop Now</a>
+                </div>
+            </div>
+            
+            <!-- Supermarket 4 -->
+            <div class="supermarket-card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="City Mart">
+                </div>
+                <div class="card-content">
+                    <h3>City Mart</h3>
+                    <p>Central Area, Abuja</p>
+                    <p>Fresh produce and quality household items</p>
+                    <div class="card-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.6</span>
+                        </div>
+                        <div class="delivery-time">35-50 min</div>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; margin-top: 15px;">Shop Now</a>
+                </div>
+            </div>
+            
+            <!-- Supermarket 5 -->
+            <div class="supermarket-card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1602488257136-221466483930?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gimbiya Supermarket">
+                </div>
+                <div class="card-content">
+                    <h3>Gimbiya Supermarket</h3>
+                    <p>Area 11, Abuja</p>
+                    <p>Local favorites and international brands</p>
+                    <div class="card-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.2</span>
+                        </div>
+                        <div class="delivery-time">15-30 min</div>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; margin-top: 15px;">Shop Now</a>
+                </div>
+            </div>
+            
+            <!-- Supermarket 6 -->
+            <div class="supermarket-card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1601593346740-9b858b875beb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grand Square">
+                </div>
+                <div class="card-content">
+                    <h3>Grand Square</h3>
+                    <p>Gwarinpa, Abuja</p>
+                    <p>Large supermarket with diverse product range</p>
+                    <div class="card-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                        <div class="delivery-time">40-55 min</div>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; margin-top: 15px;">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Stretch Buy</h3>
+                <p>Your trusted grocery delivery service in Abuja, Nigeria. We connect you with the best supermarkets in your area.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                 <ul>
+                    <li><i class="fas fa-map-marker-alt"></i>Abuja , Nigeria </li>
+                    <li><i class="fas fa-phone"></i> +234 9040016946</li>
+                    <li><i class="fas fa-envelope"></i> info@Stretchbuy.com</li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div style="display: flex; gap: 15px; margin-top: 15px;">
+                    <a href="#" style="color: #ddd; font-size: 20px;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: #ddd; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: #ddd; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: #ddd; font-size: 20px;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Stretch Buy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const supermarketCards = document.querySelectorAll('.supermarket-card');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            supermarketCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('btn')) {
+                        this.querySelector('a').click();
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                
+                // Change icon based on menu state
+                const icon = this.querySelector('i');
+                if (nav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
