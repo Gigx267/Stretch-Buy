@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Stretch Buy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo.PNG">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2ecc71;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: #2ecc71;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #2ecc71;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn-outline {
+            border: 2px solid #2ecc71;
+            color: #2ecc71;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: #2ecc71;
+            color: white;
+            border: 2px solid #2ecc71;
+        }
+        
+        .btn-primary:hover {
+            background: #27ae60;
+            border-color: #27ae60;
+        }
+        
+        /* About Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1550147760-44c9966d6bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .about-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* About Content Section */
+        .about-content {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            color: #777;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .mission-card, .vision-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .mission-card i, .vision-card i {
+            font-size: 40px;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+        
+        .mission-card h3, .vision-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .mission-card p, .vision-card p {
+            color: #777;
+            line-height: 1.6;
+        }
+        
+        .story-section {
+            margin-bottom: 60px;
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .story-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .story-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .story-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .values-section {
+            margin-bottom: 60px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-card i {
+            font-size: 35px;
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+        
+        .value-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .value-card p {
+            color: #777;
+            line-height: 1.6;
+        }
+        
+        /* Team Section */
+        .team-section {
+            margin-bottom: 60px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 20px;
+        }
+        
+        .team-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .team-info p {
+            color: #2ecc71;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #777;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #2ecc71;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 5% 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #2ecc71;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #2ecc71;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin: 20px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 10px 15px;
+            }
+            
+            .auth-buttons {
+                margin-top: 15px;
+            }
+            
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-shopping-basket logo-icon"></i>
+                <h1>Stretch Buy</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" style="color: #2ecc71;">About Us</a></li>
+                    <li><a href="#">Supermarkets</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            
+           
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h2>About Stretch Buy</h2>
+            <p>Your trusted grocery delivery service connecting Abuja residents with the best local supermarkets</p>
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="about-content">
+        <div class="section-header">
+            <h2>Our Story</h2>
+            <p>Learn how we're revolutionizing grocery shopping in Abuja</p>
+        </div>
+        
+        <div class="story-section">
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>From Idea to Reality</h3>
+                    <p>Stretch Buy was founded in 2023 with a simple mission: to make grocery shopping in Abuja more convenient, efficient, and stress-free. Our founders recognized the challenges that residents faced when trying to access quality groceries from their favorite supermarkets amidst busy schedules and traffic congestion.</p>
+                    <p>What started as a small operation connecting a few supermarkets in Wuse and Maitama has grown into Abuja's leading grocery delivery service, partnering with over 20 supermarkets across the city and serving thousands of satisfied customers.</p>
+                    <p>Today, we continue to innovate and expand our services to meet the growing needs of Abuja residents while maintaining our commitment to quality, reliability, and exceptional customer service.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Stretch Buy Team">
+                </div>
+            </div>
+        </div>
+        
+        <div class="mission-vision">
+            <div class="mission-card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Our Mission</h3>
+                <p>To revolutionize grocery shopping in Abuja by providing fast, reliable, and convenient delivery services that save our customers time and effort while supporting local supermarkets.</p>
+            </div>
+            
+            <div class="vision-card">
+                <i class="fas fa-eye"></i>
+                <h3>Our Vision</h3>
+                <p>To become Nigeria's most trusted grocery delivery platform, expanding to major cities while maintaining our commitment to quality service and community support.</p>
+            </div>
+        </div>
+        
+        <div class="values-section">
+            <div class="section-header">
+                <h2>Our Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Reliability</h4>
+                    <p>We guarantee timely deliveries and consistent service you can depend on for your daily needs.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Quality</h4>
+                    <p>We work only with trusted supermarkets to ensure you receive fresh, high-quality products every time.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>Community</h4>
+                    <p>We support local businesses and contribute to the growth of Abuja's retail ecosystem.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovation</h4>
+                    <p>We continuously improve our technology and processes to enhance your shopping experience.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="team-section">
+            <div class="section-header">
+                <h2>Our Team</h2>
+                <p>Meet the people behind Stretch Buy</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chinedu Okoro">
+                    </div>
+                    <div class="team-info">
+                        <h4>Chinedu Okoro</h4>
+                        <p>Founder & CEO</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Amina Yusuf">
+                    </div>
+                    <div class="team-info">
+                        <h4>Amina Yusuf</h4>
+                        <p>Operations Director</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tunde Adebayo">
+                    </div>
+                    <div class="team-info">
+                        <h4>Tunde Adebayo</h4>
+                        <p>Technology Lead</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chioma Eze">
+                    </div>
+                    <div class="team-info">
+                        <h4>Chioma Eze</h4>
+                        <p>Customer Experience Manager</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>Join the Stretch Buy Family</h2>
+                <p>Experience the convenience of grocery delivery from Abuja's best supermarkets</p>
+                <a href="index.html" class="btn btn-primary">Start Shopping Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Stretch Buy</h3>
+                <p>Your trusted grocery delivery service in Abuja, Nigeria. We connect you with the best supermarkets in your area.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                 <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Abuja, Nigeria</li>
+                    <li><i class="fas fa-phone"></i> +234 9040016946</li>
+                    <li><i class="fas fa-envelope"></i> info@stretchbuy.com</li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div style="display: flex; gap: 15px; margin-top: 15px;">
+                    <a href="#" style="color: #ddd; font-size: 20px;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: #ddd; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: #ddd; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: #ddd; font-size: 20px;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Stretch Buy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamMembers = document.querySelectorAll('.team-member');
+            
+            teamMembers.forEach(member => {
+                member.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                member.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
